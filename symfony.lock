@@ -1,4 +1,7 @@
 {
+    "php": {
+        "version": "7.2"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -7,6 +10,18 @@
     },
     "psr/log": {
         "version": "1.0.2"
+    },
+    "sensiolabs/security-checker": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.0",
+            "ref": "160c9b600564faa1224e8f387d49ef13ceb8b793"
+        },
+        "files": [
+            "config/packages/security_checker.yaml"
+        ]
     },
     "symfony/cache": {
         "version": "v4.1.6"
@@ -67,6 +82,12 @@
             "version": "3.4",
             "ref": "903c28f0ce372b8414cc569a8832428737e8abd1"
         }
+    },
+    "symfony/http-client": {
+        "version": "v4.4.8"
+    },
+    "symfony/http-client-contracts": {
+        "version": "v2.1.1"
     },
     "symfony/http-foundation": {
         "version": "v4.1.6"
