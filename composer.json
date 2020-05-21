@@ -13,7 +13,8 @@
     },
     "require-dev": {
         "sensiolabs/security-checker": "^6.0",
-        "symfony/dotenv": "*"
+        "symfony/dotenv": "*",
+        "symfony/profiler-pack": "^1.0"
     },
     "config": {
         "preferred-install": {
