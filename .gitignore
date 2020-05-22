@@ -8,3 +8,4 @@
 
 .idea
 .docker/data/
+./config/routes/dev/web_profiler.yaml
