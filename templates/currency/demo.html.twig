@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block title %}demo{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-dark bg-primary mb-3">
+        <div class="container">
+            <a href="#" class="navbar-brand">GitHub Finder</a>
+        </div>
+    </nav>
+    <div class="container inputContainer">
+        <form id="currency-form">
+            <div class="form-group">
+
+                <div class="search card card-body">
+                    <h1>Currency calculator</h1>
+{#                    <p class="lead">Enter amount in PLN</p>#}
+                    <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="amountPln">Based on NBP ask rates</label>
+                        <input type="number" id="amountPln" class="form-control" placeholder="PLN">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="amountEur">Euro</label>
+                        <input type="text" id="amountEur" class="form-control" readonly>
+                    </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Convert</button>
+
+                </div>
+            </div>
+        </form>
+
+        <br>
+
+    </div>
+{% endblock %}{#endbody#}
+{% block javascripts %}
+    {{ parent() }}
+    <script language="JavaScript">
+        $(document).ready(function (e) {
+            // console.log($("#answer"));
+            $("#currency-form").on("submit", function (event) {
+                event.preventDefault();
+                let formData = {'amountPln' : $('input[id=amountPln]').val()}
+                $.ajax({
+                    url: "{{ path('convert') }}",
+                    type: 'POST',
+                    dataType: 'json',
+                    data:  formData,
+                    async: true,
+
+                    success: function (data, status) {
+                        if(isFinite(data.eurResult)){
+                            console.log(`<p>${data.eurResult}</p>`);
+                            eurResult = (data.eurResult).toFixed(2);
+                            console.log(eurResult);
+                            // let answer = (new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(eurResult))
+                            $("input#amountEur").val(`€ ` +eurResult);
+                        }
+                    },
+                    error : function(xhr, textStatus, errorThrown) {
+                        alert('Ajax request failed.'+ errorThrown);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+

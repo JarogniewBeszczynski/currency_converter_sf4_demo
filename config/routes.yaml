@@ -1,6 +1,12 @@
 index:
     path: /
-    controller: App\Controller\ArticleController::homepage
+    controller: App\Controller\CalculatorController::homepage
 news:
     path: /news/{slug}
-    controller: App\Controller\ArticleController::news
+    controller: App\Controller\CalculatorController::news
+convert:
+    path: /convert
+    controller: App\Controller\CalculatorController::convert
+fetch_rates:
+    path: /fetch_rates
+    controller: App\Controller\CalculatorController::fetchRates
